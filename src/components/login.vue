@@ -15,41 +15,38 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       formData: {
-        username: '',
-        password: ''
+        username: "",
+        password: ""
       }
-    }
+    };
   },
   methods: {
-    async loginHome () {
-      const res = await this.$http.post('login', this.formData)
+    async loginHome() {
+      const res = await this.$http.post("login", this.formData);
       if (res.data.data === null) {
-        this.$message.error(res.data.meta.msg)
+        this.$message.error(res.data.meta.msg);
       }
-      console.log(res)
+      // console.log(res);
       const {
-        data: {
-          data: { token },
+        data: {data,
           meta: { msg, status }
         }
-      } = res
-      console.log(token)
+      } = res;
+      // console.log(token)
       if (status === 200) {
-        console.log('状态码')
-        localStorage.setItem('token', token)
+        localStorage.setItem("token", data.token);
         this.$router.push({
-          name: 'home'
-        })
+          name: "home"
+        });
       } else {
-        this.$message.error(msg)
+        this.$message.error(msg);
       }
     }
   }
-}
-
+};
 </script>
 
 <style>
@@ -58,7 +55,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: darkslategrey;
+  background-color: #324152;
 }
 .formBox {
   background-color: #ffffff;

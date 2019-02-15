@@ -1,8 +1,7 @@
-body {
-    height: 100%;
-    
-}
-body,h2 {
-    margin: 0;
-    padding: 0;
+html,
+body,
+h2 {
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
