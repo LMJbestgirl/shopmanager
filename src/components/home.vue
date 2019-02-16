@@ -126,9 +126,7 @@ export default {
 .left {
   background-color: #ffffff;
 }
-.mian {
-  /* background-color: pink; */
-}
+
 .bt {
   color: #ffffff;
   text-align: center;

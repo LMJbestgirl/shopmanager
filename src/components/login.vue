@@ -8,7 +8,7 @@
       <el-form-item label="密码">
         <el-input v-model="formData.password"></el-input>
       </el-form-item>
-      <el-button type="primary" plain @click.prevent="loginHome()">主要按钮</el-button>
+      <el-button type="primary" plain @click.prevent="loginHome()">立即登录</el-button>
     </el-form>
   </div>
 </template>
@@ -31,7 +31,8 @@ export default {
       }
       // console.log(res);
       const {
-        data: {data,
+        data: {
+          data,
           meta: { msg, status }
         }
       } = res;
