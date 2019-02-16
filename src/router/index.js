@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '../components/login.vue'
 import Home from '../components/home.vue'
 import Users from '../components/users.vue'
+import Rigths from '../components/rights.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -16,10 +17,15 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home,
-      children:[{
+      children: [{
         path: '/users',
         name: 'name',
-        component :Users
+        component: Users
+      },
+      {
+        path: '/rigths',
+        name: 'rigths',
+        component: Rigths
       }]
     }
   ]

@@ -40,11 +40,11 @@
             </template>
             <el-menu-item index="1-1">
               <i class="el-icon-menu"></i>
-              选项1
+              角色列表
             </el-menu-item>
-            <el-menu-item index="users">
+            <el-menu-item index="rigths">
               <i class="el-icon-menu"></i>
-              选项1
+              权限列表
             </el-menu-item>
           </el-submenu>
           <!-- 3 -->

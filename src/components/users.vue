@@ -51,7 +51,14 @@
             plain
             @click="showdeleteUsers(scope.row)"
           ></el-button>
-          <el-button type="success" icon="el-icon-check" circle size="mini" plain></el-button>
+          <el-button
+            type="success"
+            icon="el-icon-check"
+            circle
+            size="mini"
+            plain
+            @click="showUsersSelect(scope.row)"
+          ></el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -102,6 +109,27 @@
         <el-button type="primary" @click="EditUsers()">确 定</el-button>
       </div>
     </el-dialog>
+    <!-- 下拉框 -->
+    <el-dialog title="分配角色" :visible.sync="dialogFormVisibleSelect">
+      <el-form :model="formData" label-width="80px">
+        <el-form-item label="用户名">{{userCur}}</el-form-item>
+        <el-form-item label="人物角色">
+          <el-select v-model="selectVal" placeholder="请选择">
+            <el-option label="请选择" value="1"></el-option>
+            <el-option
+              v-for="item in Userlist"
+              :key="item.id"
+              :label="item.roleName"
+              :value="item.id"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisibleSelect = false">取 消</el-button>
+        <el-button type="primary" @click="changeRole()">确 定</el-button>
+      </div>
+    </el-dialog>
   </el-card>
 </template>
 
@@ -115,23 +143,51 @@ export default {
       pagesize: 2,
       dialogFormVisibleAdd: false,
       dialogFormVisibleEdit: false,
+      dialogFormVisibleSelect: false,
       formData: {
         username: "",
         email: "",
         password: "",
         mobile: ""
       },
-      total: "-1"
+      selectVal: 1,
+      total: -1,
+      Userlist: [],
+      userCur: "",
+      usersId: -1
     };
   },
   created() {
     this.getList();
   },
   methods: {
+    async showUsersSelect(users) {
+      this.usersId = users.id;
+      this.userCur = users.username;
+      this.dialogFormVisibleSelect = true;
+      const res = await this.$http.get(`roles`);
+      console.log(res);
+      const { data } = res.data;
+      this.Userlist = data;
+      const res1 = await this.$http.get(`users/${users.id}`);
+      console.log(res1);
+      const {
+        data: { rid }
+      } = res1.data;
+      console.log(rid);
+      this.selectVal = rid;
+    },
+    async changeRole() {
+      const res = await this.$http.put(`users/${this.usersId}/role`, {
+        rid: this.selectVal
+      });
+      console.log(res);
+    },
     async UsersChange(users) {
       const res = await this.$http.put(
         `users/${users.id}/state/${users.mg_state}`
       );
+
       const {
         meta: { msg, status }
       } = res.data;
