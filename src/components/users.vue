@@ -271,7 +271,6 @@ export default {
     },
     async getList() {
       const AUTH_TOKEN = localStorage.getItem("token");
-      console.log(AUTH_TOKEN);
       this.$http.defaults.headers.common["Authorization"] = AUTH_TOKEN;
       const res = await this.$http.get(
         `users?query=${this.query}&pagenum=${this.pagenum}&pagesize=${

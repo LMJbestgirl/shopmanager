@@ -5,7 +5,25 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      list: []
+    };
+  },
+  created() {
+    this.getList();
+  },
+  methods: {
+    async getList() {
+      const AUTH_TOKEN = localStorage.getItem("token");
+      this.$http.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+      const res = await this.$http.get("rights/list");
+      const { data } = res.data;
+      this.list = data;
+    }
+  }
+};
 </script>
 
 <style>
