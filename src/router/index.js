@@ -4,6 +4,7 @@ import Login from '../components/login.vue'
 import Home from '../components/home.vue'
 import Users from '../components/users.vue'
 import Rigths from '../components/rigths.vue'
+import Roles from '../components/roles.vue'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -25,6 +26,11 @@ export default new Router({
         path: '/rigths',
         name: 'rigths',
         component: Rigths
+      },
+      {
+        path: '/roles',
+        name: 'roles',
+        component: Roles
       }
       ]
     }
