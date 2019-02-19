@@ -22,13 +22,14 @@
           class="el-menu-vertical-demo"
         >
           <!-- 1 -->
-          <el-submenu index="1">
+          <el-submenu :index="item.order+''" v-for="(item) in menusList" :key="item.id">
             <template slot="title">
               <i class="el-icon-location"></i>
-              <span>用户管理</span>
+              <span>{{item.authName}}</span>
             </template>
-            <el-menu-item index="users">
+            <el-menu-item :index="item2.path" v-for="(item2) in item.children" :key="item2.id">
               <i class="el-icon-menu"></i>
+<<<<<<< HEAD
               用户列表
             </el-menu-item>
           </el-submenu>
@@ -86,6 +87,9 @@
             <el-menu-item index="1-1">
               <i class="el-icon-menu"></i>
               选项1
+=======
+              <span>{{item2.authName}}</span>
+>>>>>>> dev-rights
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -99,16 +103,27 @@
 
 <script>
 export default {
-  beforeMount() {
-    if (!localStorage.getItem("token")) {
-      localStorage.clear();
-      this.$router.push({
-        name: "Login"
-      });
-      this.$message.warning("请先登录");
-    }
+  data() {
+    return {
+      menusList: []
+    };
+  },
+  beforeMount() {},
+  created() {
+    this.getMenus();
   },
   methods: {
+    async getMenus() {
+      const res = await this.$http.get(`menus`);
+      console.log(res);
+      const {
+        meta: { msg, status },
+        data
+      } = res.data;
+      if (status === 200) {
+        this.menusList = data;
+      }
+    },
     logout() {
       this.$router.push({
         name: "Login"
