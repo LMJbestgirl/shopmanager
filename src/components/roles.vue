@@ -114,11 +114,18 @@ export default {
       const arr1 = this.$refs.treeDom.getCheckedKeys();
       const arr2 = this.$refs.treeDom.getHalfCheckedKeys();
       const arr = [...arr1, ...arr2];
-      console.log(arr,this.currId)
+      console.log(arr, this.currId);
       const res = await this.$http.post(`roles/${this.currId}/rights`, {
-        rid: arr.join(",")
+        rids: arr.join(",")
       });
-      console.log(res);
+      const {
+        meta: { msg, status }
+      } = res.data;
+      if (status === 200) {
+        this.dialogFormVisible = false;
+        this.$message.success(msg);
+        this.getRolesList();
+      }
     },
     async showUsersSelect(roles) {
       this.currId = roles.id;
