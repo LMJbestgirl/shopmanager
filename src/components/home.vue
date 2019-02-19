@@ -27,7 +27,7 @@
               <i class="el-icon-location"></i>
               <span>{{item.authName}}</span>
             </template>
-            <el-menu-item :index="item.path + ''" v-for="(item2) in item.children" :key="item2.id">
+            <el-menu-item :index="item2.path" v-for="(item2) in item.children" :key="item2.id">
               <i class="el-icon-menu"></i>
               <span>{{item2.authName}}</span>
             </el-menu-item>
@@ -48,15 +48,7 @@ export default {
       menusList: []
     };
   },
-  beforeMount() {
-    if (!localStorage.getItem("token")) {
-      localStorage.clear();
-      this.$router.push({
-        name: "Login"
-      });
-      this.$message.warning("请先登录");
-    }
-  },
+  beforeMount() {},
   created() {
     this.getMenus();
   },

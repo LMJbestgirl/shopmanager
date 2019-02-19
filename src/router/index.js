@@ -3,15 +3,16 @@ import Router from 'vue-router'
 import Login from '../components/login.vue'
 import Home from '../components/home.vue'
 import Users from '../components/users.vue'
-import Rigths from '../components/rigths.vue'
+import Rights from '../components/rights.vue'
 import Roles from '../components/roles.vue'
+import { Message } from 'element-ui';
 Vue.use(Router)
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
       component: Login,
-      name: 'Login'
+      name: 'login'
     },
     {
       path: '/home',
@@ -23,9 +24,9 @@ export default new Router({
         component: Users
       },
       {
-        path: '/rigths',
-        name: 'rigths',
-        component: Rigths
+        path: '/rights',
+        name: 'rights',
+        component: Rights
       },
       {
         path: '/roles',
@@ -36,3 +37,25 @@ export default new Router({
     }
   ]
 })
+
+
+
+
+
+router.beforeEach((to, from, next) => {
+
+  if (to.name === 'login') {
+    next()
+  } else {
+    const token = localStorage.getItem("token")
+    if (!token) {
+      Message.success('请先登录')
+      router.push({
+        name: 'login'
+      })
+      return
+    }
+    next()
+  }
+})
+export default router;
