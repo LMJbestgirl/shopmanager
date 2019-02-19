@@ -10,12 +10,12 @@ Vue.use(Router)
 const router = new Router({
   routes: [
     {
-      path: '/',
+      path: '/login',
       component: Login,
       name: 'login'
     },
     {
-      path: '/home',
+      path: '/',
       name: 'home',
       component: Home,
       children: [{
@@ -49,7 +49,7 @@ router.beforeEach((to, from, next) => {
   } else {
     const token = localStorage.getItem("token")
     if (!token) {
-      Message.success('请先登录')
+      Message.warning('请先登录')
       router.push({
         name: 'login'
       })
