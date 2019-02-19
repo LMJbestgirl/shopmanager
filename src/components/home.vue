@@ -66,8 +66,9 @@ export default {
     },
     logout() {
       this.$router.push({
-        name: "Login"
+        name: "login"
       });
+      localStorage.clear();
     }
   }
 };
