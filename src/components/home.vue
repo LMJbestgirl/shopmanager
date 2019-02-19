@@ -29,67 +29,7 @@
             </template>
             <el-menu-item :index="item2.path" v-for="(item2) in item.children" :key="item2.id">
               <i class="el-icon-menu"></i>
-<<<<<<< HEAD
               用户列表
-            </el-menu-item>
-          </el-submenu>
-          <!-- 2 -->
-          <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>权限管理</span>
-            </template>
-            <el-menu-item index="1-1">
-              <i class="el-icon-menu"></i>
-              角色列表
-            </el-menu-item>
-            <el-menu-item index="rigths">
-              <i class="el-icon-menu"></i>
-              权限列表
-            </el-menu-item>
-          </el-submenu>
-          <!-- 3 -->
-          <el-submenu index="3">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>商品管理</span>
-            </template>
-            <el-menu-item index="1-1">
-              <i class="el-icon-menu"></i>
-              选项1
-            </el-menu-item>
-            <el-menu-item index="users">
-              <i class="el-icon-menu"></i>4
-              选项1
-            </el-menu-item>
-            <el-menu-item index="users">
-              <i class="el-icon-menu"></i>
-              选项1
-            </el-menu-item>
-          </el-submenu>
-          <!-- 4 -->
-          <el-submenu index="4">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>订单管理</span>
-            </template>
-            <el-menu-item index="1-1">
-              <i class="el-icon-menu"></i>
-              选项1
-            </el-menu-item>
-          </el-submenu>
-          <!-- 5 -->
-          <el-submenu index="5">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>数据统一</span>
-            </template>
-            <el-menu-item index="1-1">
-              <i class="el-icon-menu"></i>
-              选项1
-=======
-              <span>{{item2.authName}}</span>
->>>>>>> dev-rights
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -126,9 +66,8 @@ export default {
     },
     logout() {
       this.$router.push({
-        name: "login"
+        name: "Login"
       });
-      localStorage.clear();
     }
   }
 };
