@@ -58,7 +58,7 @@
               选项1
             </el-menu-item>
             <el-menu-item index="users">
-              <i class="el-icon-menu"></i>
+              <i class="el-icon-menu"></i>4
               选项1
             </el-menu-item>
             <el-menu-item index="users">
