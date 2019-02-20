@@ -39,7 +39,7 @@ const router = new Router({
       },
       {
         path: '/goods',
-        name: 'goods',
+        name: 'goodlist',
         component: Goodlist
       },
       {
