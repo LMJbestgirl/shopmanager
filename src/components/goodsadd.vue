@@ -97,7 +97,7 @@ export default {
         attrs: []
       },
       arrDy: [],
-      selectedOptions: [g1],
+      selectedOptions: [],
       options: [],
       defaultProp: {
         label: "cat_name",

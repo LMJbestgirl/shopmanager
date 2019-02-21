@@ -29,7 +29,7 @@
             </template>
             <el-menu-item :index="item2.path" v-for="(item2) in item.children" :key="item2.id">
               <i class="el-icon-menu"></i>
-              用户列表
+              {{item2.authName}}
             </el-menu-item>
           </el-submenu>
         </el-menu>
