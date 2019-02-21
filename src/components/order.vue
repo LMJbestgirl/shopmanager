@@ -1,6 +1,6 @@
 <template>
   <el-card>
-    <my-bread level1="订单管理" level2="订单列表"></my-bread>
+    <cus-bread level1="订单管理" level2="订单列表"></cus-bread>
     <el-table :data="list" style="width: 100%">
       <el-table-column type="index" label="#" width="40"></el-table-column>
       <el-table-column prop="order_number" label="订单编号" width="180"></el-table-column>
@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import CityArr from "@/assets/city_data2017_element.js";
 export default {
   data() {
     return {
@@ -76,7 +77,7 @@ export default {
       this.list = res.data.data.goods;
     },
     showEditdia() {
-      this.catlist = [];
+      this.catlist = CityArr;
       this.dialogFormVisible = true;
     }
   }
