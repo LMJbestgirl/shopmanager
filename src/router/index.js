@@ -10,6 +10,7 @@ import GoodsAdd from '../components/goodsadd.vue'
 import Cateparams from '../components/cateparams.vue'
 import Goodscate from '../components/goodscate.vue'
 import Orders from '../components/order.vue'
+import Reports from '../components/reports.vue'
 import { Message } from 'element-ui';
 
 Vue.use(Router)
@@ -63,6 +64,11 @@ const router = new Router({
         path: '/orders',
         name: 'orders',
         component: Orders
+      },
+      {
+        path: '/reports',
+        name: 'reports',
+        component: Reports
       }
       ]
     }
@@ -89,4 +95,7 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
+
+
 export default router;

@@ -13,6 +13,17 @@ httpServer.install = function (Vue) {
         // 对请求错误做些什么
         return Promise.reject(error);
     });
+    axios.interceptors.response.use(function (response) {
+        // 对响应数据做点什么
+        const { meta: { msg, status } } = response.data;
+        if (status !== 200 && status !== 201) {
+            Message.error(msg)
+        }
+        return response;
+    }, function (error) {
+
+        return Promise.reject(error);
+    });
     Vue.prototype.$http = axios;
 
 }

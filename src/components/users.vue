@@ -15,7 +15,7 @@
         <el-button type="info" plain class="btn" @click="showUsers()">添加用户</el-button>
       </el-col>
     </el-row>
-    <el-table :data="list" style="width: 100%" class="tableBox">
+    <el-table :data="list" style="width: 100%" class="tableBox" v-loading="loading">
       <el-table-column prop="id" label="id" width="50"></el-table-column>
       <el-table-column prop="username" label="姓名" width="100"></el-table-column>
       <el-table-column prop="email" label="邮箱" width="140"></el-table-column>
@@ -138,6 +138,7 @@ export default {
   data() {
     return {
       list: [],
+      loading: true,
       query: "",
       pagenum: 1,
       pagesize: 2,
@@ -278,6 +279,7 @@ export default {
         }`
       );
       console.log(res);
+      this.loading = false;
       const {
         data,
         meta: { msg, status }
