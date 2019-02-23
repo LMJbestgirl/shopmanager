@@ -16,7 +16,7 @@
     <el-container>
       <el-aside width="200px" class="left">
         <el-menu
-          default-active="2"
+          :default-active="$route.name"
           :unique-opened="true"
           :router="true"
           class="el-menu-vertical-demo"

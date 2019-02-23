@@ -17,7 +17,7 @@ httpServer.install = function (Vue) {
         // 对响应数据做点什么
         const { meta: { msg, status } } = response.data;
         if (status !== 200 && status !== 201) {
-            Message.error(msg)
+            // Message.error(msg)
         }
         return response;
     }, function (error) {
